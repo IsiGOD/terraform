@@ -19,7 +19,7 @@ module "network" {
 }
 
 module "subnet" {
-  source = "./modules/subnet"
+  source = "./modules/subnets"
   vpc_id = module.network.vpc_id
 }
 
