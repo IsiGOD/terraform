@@ -18,16 +18,21 @@ module "network" {
   
 }
 
+module "subnet" {
+  source = "./modules/subnet"
+  vpc_id = module.network.vpc_id
+}
+
 module "instance" {
   source = "./modules/instances"
   instance_name = var.instance_name
   instance_type = var.instance_type
-  subnet_id = module.network.subnet_id
+  subnet_id = module.subnet.subnet_id
 }
 
 module "instance_dos" {
   source = "./modules/instances"
   instance_name = var.instance_name
   instance_type = var.instance_type
-  subnet_id = module.network.subnet_id
+  subnet_id = module.subnet.subnet_id
 }
